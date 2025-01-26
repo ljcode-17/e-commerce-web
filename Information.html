@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information - Local Philippine Products</title>
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #5C4033;
+            --background-color: #f9f9f9;
+            --text-color: #ffffff;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        .intro {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .product-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 50px 20px;
+            background-color: var(--background-color);
+        }
+
+        .product-info div {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-info div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-info img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .faq-section {
+            background-color: var(--background-color);
+            padding: 60px 20px;
+        }
+
+        .faq-section h3 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 40px;
+        }
+
+        .faq {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-item h4 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .cta-section {
+            text-align: center;
+            background-color: var(--secondary-color);
+            padding: 60px;
+            color: var(--text-color);
+        }
+
+        .cta-section h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-section a {
+            color: var(--text-color);
+            background-color: var(--primary-color);
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-section a:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Local Philippine Products</h1>
+    </header>
+
+    <nav>
+        <a href="Homes.html">Home</a>
+        <a href="Trendy.html">Trends</a>
+        <a href="Historia.html">Cart</a>
+        <a href="Aboutus.html">About Us</a>
+        <a href="Information.html">Information</a>
+    </nav>
+
+    <section class="intro">
+        <h2>Information About Our Products</h2>
+        <p>Our products showcase the rich culture and craftsmanship of local artisans from across the Philippines. Discover unique, high-quality items that tell a story of passion, tradition, and excellence.</p>
+    </section>
+
+    <section class="product-info">
+        <div>
+            <img src="Info photo/21.png" alt="Handwoven Baskets">
+            <h3>Handwoven Baskets</h3>
+            <p>These beautiful handwoven baskets are crafted by artisans from rural communities. Each piece is made with love and care, using natural materials.</p>
+        </div>
+        <div>
+            <img src="Info photo/22.png" alt="Handmade Jewelry">
+            <h3>Handmade Jewelry</h3>
+            <p>Our handmade jewelry is made from locally sourced materials, offering unique designs inspired by Filipino culture and nature.</p>
+        </div>
+        <div>
+            <img src="Info photo/23.png" alt="T'nalak">
+            <h3>Philippine Textiles</h3>
+            <p>Discover the rich history and artistry behind traditional Philippine textiles. Our collection includes garments made from indigenous fabrics.</p>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq">
+            <div class="faq-item">
+                <h4>What materials are used in the products?</h4>
+                <p>Our products are made from natural, sustainable materials sourced from local communities, ensuring authenticity and eco-friendliness.</p>
+            </div>
+            <div class="faq-item">
+                <h4>How do I place an order?</h4>
+                <p>You can place an order through our website. Simply browse our products, select your desired items, and proceed to checkout.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Do you ship internationally?</h4>
+                <p>Yes, we offer international shipping to several countries. Shipping fees and delivery times may vary depending on your location.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h3>Ready to explore our products?</h3>
+        <p>Browse through our wide selection of handcrafted items today and support local artisans while owning unique, high-quality pieces.</p>
+        <a href="Homes.html">Shop Now</a>
+    </section>
+</body>
+</html>

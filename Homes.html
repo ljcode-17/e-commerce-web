@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+       function addToCart(productName, productImage, productPrice) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const currentDate = new Date().toISOString().split('T')[0];
+
+            cart.push({
+                name: productName,
+                image: productImage,
+                price: productPrice, // Price of the product
+                addedDate: currentDate,
+            });
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${productName} has been added to your cart!`);
+        }
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modernized Website</title>
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #5C4033;
+            --background-color: #f9f9f9;
+            --text-color: #ffffff;
+            --card-bg: #1e1e1e;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            color: var(--text-color);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        .hero {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .hero button {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 30px;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .hero button:hover {
+            transform: scale(1.05);
+            background-color: #ff3300;
+        }
+
+        .featured-products {
+            padding: 80px 50px;
+            background: var(--background-color);
+            color: #000;
+            text-align: center;
+        }
+
+        .featured-products h3 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .product {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .product img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+            color: var(--text-color);
+        }
+
+        .product h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .product button {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            font-size: 1.2rem;
+        }
+
+        .product button:hover {
+            background-color: #ff3300;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: var(--text-color);
+            padding: 30px 50px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <script>
+        function confirmOrder(productName) {
+            const userConfirmed = confirm(`Do you want to order ${productName}?`);
+            if (userConfirmed) {
+                alert(`${productName} has been added to your cart!`);
+            } else {
+                alert(`Order for ${productName} was canceled.`);
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Local Philippine Products</h1>
+        <nav>
+            <a href="Homes.html">Home</a>
+            <a href="Trendy.html">Trends</a>
+            <a href="Historia.html">Cart</a>
+            <a href="AboutUs.html">About Us</a>
+            <a href="Information.html">Information</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <video autoplay muted loop>
+            <source src="d:\3rd YEAR - FIrst Sem\Web Development\A_FINAL\Pilipinas： An Aerial Montage of The Philippines.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h2>Discover Local Excellence</h2>
+        <p>Empowering artisans, one product at a time.</p>
+        <button onclick="location.href='Trendy.html'">Show Trendy</button>
+    </section>
+    <section class="featured-products">
+        <h3>Our Products</h3>
+        <div class="product-grid">
+            <div class="product">
+                <img src="products/1.png" alt="Batur Basket">
+                <div class="product-info">
+                    <h4>Batur Basket</h4>
+                    <p>₱250</p>
+                    <p>Weaving Culture, Carrying Dreams.</p>
+                    <button onclick="addToCart('Batur Basket', 'products/1.png', '₱250')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="8.png" alt="Bamboo Basket">
+                <div class="product-info">
+                    <h4>Bamboo Basket</h4>
+                    <p>₱300</p>
+                    <p>Handmade by Filipino artisans.</p>
+                    <button onclick="addToCart('Bamboo Basket', '8.png', '₱300')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="Product Name/20.png" alt="Wooden Utensils">
+                <div class="product-info">
+                    <h4>Wooden Utensils</h4>
+                    <p>₱100/ per piece</p>
+                    <p>Crafted by Nature, Made for Your Table.</p>
+                    <button onclick="addToCart('Wooden Utensils', 'Product Name/20.png', '₱100')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="products/10.png" alt="Rattan Dining Set ">
+                <div class="product-info">
+                    <h4>Rattan Dining Set </h4>
+                    <p>₱4899</p>
+                    <p>Elevate Your Dining, Naturally.</p>
+                    <button onclick="addToCart('Rattan Dining Set ', 'products/10.png', '₱4899')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="products/12.png" alt="Wooden Mug">
+                <div class="product-info">
+                    <h4>Wooden Mug</h4>
+                    <p>₱50</p>
+                    <p>Sip Naturally, Live Sustainably.</p>
+                    <button onclick="addToCart('Wooden Mug', 'products/12.png', '₱50')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="products/3.png" alt="Shell Dream Catcher">
+                <div class="product-info">
+                    <h4>Shell Dream Catcher</h4>
+                    <p>₱85</p>
+                    <p>Where Dreams Find Peace.</p>
+                    <button onclick="addToCart('Shell Dream Catcher', 'products/3.png', '₱85')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="Product Name/8.png" alt="Wood Leather Shoes">
+                <div class="product-info">
+                    <h4>Wood Leather Shoes</h4>
+                    <p>₱3499</p>
+                    <p>Step into Style, Rooted in Nature.</p>
+                    <button onclick="addToCart('Wood Leather Shoes', 'Product Name/8.png', '₱3499')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="products/5.png" alt="Wood Veneer Bag">
+                <div class="product-info">
+                    <h4>Wood Veneer Bag</h4>
+                    <p>₱399</p>
+                    <p>Carry Elegance, Carry Nature.</p>
+                    <button onclick="addToCart('Wood Veneer Bag', 'products/5.png', '₱399')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="products/6.png" alt="Modern Abaka Slippers">
+                <div class="product-info">
+                    <h4>Modern Abaka Slippers</h4>
+                    <p>₱249</p>
+                    <p>Step Lightly, Live Naturally.</p>
+                    <button onclick="addToCart('Modern Abaka Slippers', 'products/6.png', '₱249')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="products/4.png" alt="Piña Fiber Filipiniana">
+                <div class="product-info">
+                    <h4>Piña Fiber Filipiniana</h4>
+                    <p>₱5000</p>
+                    <p>Piña Filipiniana: Timeless Grace, Filipino Pride.</p>
+                    <button onclick="addToCart('Piña Fiber Filipiniana', 'products/4.png', '₱5000')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="cco.png" alt="Coconut Shell Chandelier">
+                <div class="product-info">
+                    <h4>Coconut Shell Chandelier</h4>
+                    <p>₱1500</p>
+                    <p>Rustic Elegance in Every Glow.</p>
+                    <button onclick="addToCart('Coconut Shell Chandelier', 'pco.png', '₱1500')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="Product Name/19.png" alt="Clay Cups">
+                <div class="product-info">
+                    <h4>Clay Cups</h4>
+                    <p>₱60/ per piece</p>
+                    <p>Holding Tradition, One Sip at a Time.</p>
+                    <button onclick="addToCart('Clay Cups', 'Product Name/19.png', '₱60')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="Product Name/14.png" alt="Clay Jar">
+                <div class="product-info">
+                    <h4>Clay Jar</h4>
+                    <p>₱70/ per piece</p>
+                    <p>Timeless Craft, Natural Storage.</p>
+                    <button onclick="addToCart('Clay Jar', 'Product Name/14.png', '₱70')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="Product Name/18.png" alt="Cowrie Shell Necklace">
+                <div class="product-info">
+                    <h4>Cowrie Shell Necklace</h4>
+                    <p>₱149</p>
+                    <p>Carry the Ocean Close to Your Heart.</p>
+                    <button onclick="addToCart('Cowrie Shell Necklace', 'Product Name/18.png', '₱149')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="Product Name/17.png" alt="Pili Nuts">
+                <div class="product-info">
+                    <h4>Pili Nuts</h4>
+                    <p>₱100/ per tub</p>
+                    <p>Nature’s Perfect Snack.</p>
+                    <button onclick="addToCart('Pili Nuts', 'Product Name/17.png', '₱100')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="products/11.png" alt="Asin Tibuok">
+                <div class="product-info">
+                    <h4>Asin Tibuok</h4>
+                    <p>₱2200</p>
+                    <p>The Soul of Bohol in Every Grain.</p>
+                    <button onclick="addToCart('Asin Tibuok', 'products/11.png', '₱2200')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="products/9.png" alt="Dried Mango">
+                <div class="product-info">
+                    <h4>Dried Mango</h4>
+                    <p>₱250</p>
+                    <p>Sweet, Chewy, Naturally Delicious.</p>
+                    <button onclick="addToCart('Dried Mango', 'products/9.png', '₱250')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="Product Name/15.png" alt="Sukang Tuba">
+                <div class="product-info">
+                    <h4>Sukang Tuba</h4>
+                    <p>₱89</p>
+                    <p>The Tangy Taste of Tradition.</p>
+                    <button onclick="addToCart('Sukang Tuba', 'Product Name/15.png', '₱89')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="products/7.png" alt="Kapeng Barako">
+                <div class="product-info">
+                    <h4>Kapeng Barako</h4>
+                    <p>₱49</p>
+                    <p>Bold Flavor, Strong Heritage.</p>
+                    <button onclick="addToCart('Kapeng Barako', 'products/7.png', '₱49')">Buy Now</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="products/2.png" alt="Lambanog">
+                <div class="product-info">
+                    <h4>Lambanog</h4>
+                    <p>₱299</p>
+                    <p>The Spirit of the Philippines.</p>
+                    <button onclick="addToCart('Lambanog', 'products/2.png', '₱299')">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Local Philippine Products | Crafted with Care</p>
+    </footer>
+</body>
+</html>

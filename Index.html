@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Philippine Products</title>
+    <style>
+        :root {
+            --primary-color: #5C4033;
+            --secondary-color: #8B4513;
+            --accent-color: #A0522D;
+            --background-color: #f9f9f9;
+            --text-color: #ffffff;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 120px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            position: relative;
+            height: 70vh;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero button:hover {
+            background-color: var(--accent-color);
+        }
+
+        .promo-banner {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .promo-banner img {
+            width: 80%;
+            max-width: 900px;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px;
+        }
+
+        .promo-banner h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .promo-banner p {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .ads-section {
+            padding: 60px 30px;
+            background-color: var(--background-color);
+            text-align: center;
+        }
+
+        .ads-section h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .ads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .ad-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .ad-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .ad-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .ad-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            padding: 15px;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Local Philippine Products Logo">
+        <nav>
+            <a href="Home.html">Home</a>
+            <a href="Trends.html">Trends</a>
+            <a href="Cart.html">Cart</a>
+            <a href="AboutUs.html">About Us</a>
+            <a href="Information.html">Information</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <video autoplay muted loop>
+            <source src="videos/promo-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h1>Celebrate Local Excellence</h1>
+        <p>Discover handcrafted products with a story, passion, and culture.</p>
+        <button onclick="location.href='Trends.html'">Shop Now</button>
+    </section>
+
+    <section class="promo-banner">
+        <img src="images/banner-product.jpg" alt="Featured Product">
+        <h2>Discover the Artisan's Touch</h2>
+        <p>Experience the beauty and craftsmanship of our locally made products.</p>
+    </section>
+
+    <section class="ads-section">
+        <h2>Featured Products</h2>
+        <div class="ads-grid">
+            <div class="ad-card">
+                <img src="images/handwoven-basket.jpg" alt="Handwoven Basket">
+                <h3>Handwoven Basket</h3>
+            </div>
+            <div class="ad-card">
+                <img src="images/handmade-jewelry.jpg" alt="Handmade Jewelry">
+                <h3>Handmade Jewelry</h3>
+            </div>
+            <div class="ad-card">
+                <img src="images/philippine-textiles.jpg" alt="Philippine Textiles">
+                <h3>Philippine Textiles</h3>
+            </div>
+            <div class="ad-card">
+                <img src="images/banana-chips.jpg" alt="Banana Chips">
+                <h3>Banana Chips</h3>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Local Philippine Products</p>
+    </footer>
+</body>
+</html>

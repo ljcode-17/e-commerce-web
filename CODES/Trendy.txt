@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function addToCart(productName, productImage, productPrice) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const currentDate = new Date().toISOString().split('T')[0];
+
+            cart.push({
+                name: productName,
+                image: productImage,
+                price: productPrice,
+                addedDate: currentDate,
+            });
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${productName} has been added to your cart!`);
+        }
+
+        function confirmOrder(productName) {
+            const userConfirmed = confirm(`Do you want to order ${productName}?`);
+            if (userConfirmed) {
+                alert(`${productName} has been added to your cart!`);
+            } else {
+                alert(`Order for ${productName} was canceled.`);
+            }
+        }
+
+        function loadAllProducts() {
+            const products = [
+                { name: 'Wood Veneer Bag', image: 'products/5.png', description: 'Best seller of the season.' },
+                { name: 'Clay Cups', image: 'Product Name/19.png', description: 'Stylish and trendy.' },
+                { name: 'Dried Mango', image: 'products/9.png', description: 'High demand product.' },
+                { name: 'Lambanog', image: 'products/2.png', description: 'Customer favorite.' },
+                { name: 'Batur Basket', image: 'products/1.png', description: 'Highly recommended.' },
+                {name: 'Wooden Mug', image: 'products/12.png', description: 'Highly recommended.' },
+                {name: 'Sukang Tuba', image: 'Product Name/15.png', description: 'Highly recommended.' },
+                {name: 'Wooden Utensils', image: 'Product Name/20.png', description: 'Highly recommended.' },
+            ];
+
+            const productGrid = document.querySelector('.product-grid');
+            productGrid.innerHTML = '';
+
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product';
+
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="product-info">
+                        <h4>${product.name}</h4>
+                        <p>${product.description}</p>
+                        <button onclick="confirmOrder('${product.name}')">Buy Now</button>
+                    </div>
+                `;
+
+                productGrid.appendChild(productCard);
+            });
+        }
+
+        window.onload = loadAllProducts;
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trends - Local Philippine Products</title>
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #5C4033;
+            --background-color: #f9f9f9;
+            --text-color: #ffffff;
+            --card-bg: #ffffff;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            color: var(--text-color);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        .hero {
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url('trends-bg.jpg') no-repeat center/cover;
+            color: var(--text-color);
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .hero button {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 30px;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .hero button:hover {
+            transform: scale(1.05);
+            background-color: #ff3300;
+        }
+
+        .filter-section {
+            display: flex;
+            justify-content: center;
+            margin: 40px auto;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-section button {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border: none;
+            font-size: 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .filter-section button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .trend-products {
+            padding: 80px 50px;
+            background: var(--background-color);
+            color: #000;
+            text-align: center;
+        }
+
+        .trend-products h3 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 15px;
+            color: #333;
+            text-align: center;
+            background-color: #1e1e1e;
+            color: #fff;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .product h4 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        .product button {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 80%;
+            font-size: 1rem;
+        }
+
+        .product button:hover {
+            background-color: #3E2C21;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: var(--text-color);
+            padding: 30px 50px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Local Philippine Products</h1>
+        <nav>
+            <a href="Homes.html">Home</a>
+            <a href="Trendy.html">Trends</a>
+            <a href="Historia.html">Cart</a>
+            <a href="Aboutus.html">About Us</a>
+            <a href="Information.html">Information</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <h2>Explore Trending Products</h2>
+        <p>See what's popular and grab them while they last!</p>
+        <button onclick="location.href='#trending'">View Trends</button>
+    </section>
+    <section class="filter-section">
+        <button onclick="loadAllProducts()">All Products</button>
+    </section>
+    <section class="trend-products" id="trending">
+        <h3>Trending Products</h3>
+        <div class="product-grid">
+            <!-- Products will be loaded here dynamically -->
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Local Philippine Products | Always Trending</p>
+    </footer>
+</body>
+</html>
